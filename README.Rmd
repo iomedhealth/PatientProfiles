@@ -72,6 +72,13 @@ To see how you would create a reference to your database please consult the CDMC
 cdm <- mockPatientProfiles(numberIndividuals = 1000, source = "duckdb")
 ```
 
+### Filtering Current Events (IOMED Specific)
+If you are working with an IOMED database where both current events and medical history are stored in the same clinical tables, you can use the `filterCurrentEvents()` function to ensure PatientProfiles only uses current events when computing intersections.
+
+```{r}
+cdm <- filterCurrentEvents(cdm, method = "datetime")
+```
+
 ### Adding individuals´ characteristics
 #### Adding characteristics to patient-level data
 Say we wanted to get individuals´sex and age at condition start date for records in the condition occurrence table. We can use the `addAge` and `addSex` functions to do this:
